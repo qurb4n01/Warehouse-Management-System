@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = if (token != null) {
                 Intent(this, HomeActivity::class.java)
             } else {
-                Intent(this, MainActivity::class.java)
+                Intent(this, WelcomeActivity::class.java)
             }
             startActivity(intent)
             finish()

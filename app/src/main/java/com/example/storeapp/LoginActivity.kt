@@ -4,38 +4,34 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import com.example.storeapp.database.DatabaseHelper
 
-class FragmentLogin : Fragment() {
+class LoginActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var dbHelper: DatabaseHelper
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_login, container, false)
-        dbHelper = DatabaseHelper(requireContext())
-        sharedPreferences = requireActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.fragment_login)
 
-        val button = view.findViewById<Button>(R.id.loginLoginButton)
-        val usernameEditText = view.findViewById<EditText>(R.id.loginTextUsername)
-        val passwordEditText = view.findViewById<EditText>(R.id.loginTextPassword)
-        val rememberMeCheckBox = view.findViewById<android.widget.CheckBox>(R.id.loginCheckBox)
+        dbHelper = DatabaseHelper(this)
+        sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+
+        val button = findViewById<Button>(R.id.loginLoginButton)
+        val usernameEditText = findViewById<EditText>(R.id.loginTextUsername)
+        val passwordEditText = findViewById<EditText>(R.id.loginTextPassword)
+        val rememberMeCheckBox = findViewById<android.widget.CheckBox>(R.id.loginCheckBox)
 
         button.setOnClickListener {
             val email = usernameEditText.text.toString().trim()
             val password = passwordEditText.text.toString()
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(activity, "Lütfen email ve şifre girin", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Lütfen email ve şifre girin", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -44,27 +40,27 @@ class FragmentLogin : Fragment() {
             if (user != null) {
                 // Save login status and user ID
                 val token = "local_token_${user.id}"
-
+                
                 if (rememberMeCheckBox.isChecked) {
                     saveTokenToSharedPreferences(token)
                 } else {
                     clearTokenFromSharedPreferences()
                 }
-
+                
                 saveUserIdToSharedPreferences(user.id)
 
-                Toast.makeText(activity, "Giriş başarılı!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(activity, HomeActivity::class.java)
+                Toast.makeText(this, "Giriş başarılı!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
+                finish()
             } else {
                 Toast.makeText(
-                    activity,
+                    this,
                     "Parol ya da username sehvdir",
                     Toast.LENGTH_SHORT
                 ).show()
             }
         }
-        return view
     }
 
     private fun saveTokenToSharedPreferences(token: String) {
