@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragmentHome"
+        android:title="Home"
+        android:icon="@drawable/homeiconblue"
+        />
+    <item
+        android:id="@+id/fragmentSearch"
+        android:title="Search"
+        android:icon="@drawable/searchiconblue"
+        />
+    <item
+        android:id="@+id/fragmentAdd"
+        android:title="Add"
+        android:icon="@drawable/addiconblue"
+        />
+    <item
+        android:id="@+id/fragmentTasks"
+        android:title="Tasks"
+        android:icon="@drawable/outline_add_task_24"
+        />
+    <item
+        android:id="@+id/fragmentProfile"
+        android:title="Profile"
+        android:icon="@drawable/outline_3p_24"
+        />
+</menu>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#34495E"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/textViewTasksTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Warehouse Tasks"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FF8C42"
+        android:layout_marginBottom="24dp"
+        android:gravity="center" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewTasksContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tasks..."
+            android:textSize="16sp"
+            android:textColor="#ECF0F1"
+            android:lineSpacingExtra="8dp" />
+
+    </ScrollView>
+
+</LinearLayout>
