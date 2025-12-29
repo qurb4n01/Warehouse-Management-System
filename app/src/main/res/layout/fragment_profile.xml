@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#34495E"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/profileHeaderTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Profile"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FF8C42"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
+
+    <EditText
+        android:id="@+id/editProfileFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:padding="12dp"
+        android:background="#E8D5B7"
+        android:textColor="#2C3E50"
+        android:textColorHint="#5D4E37"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editProfileEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:background="#E8D5B7"
+        android:textColor="#2C3E50"
+        android:textColorHint="#5D4E37"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editProfilePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:background="#E8D5B7"
+        android:textColor="#2C3E50"
+        android:textColorHint="#5D4E37"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/btnSaveProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Changes"
+        android:backgroundTint="#FF8C42"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:backgroundTint="#C0392B"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>

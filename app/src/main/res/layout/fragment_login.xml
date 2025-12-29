@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#2C3E50"
+    android:padding="32dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Warehouse App"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#FF8C42"
+        android:layout_marginBottom="48dp" />
+
+    <EditText
+        android:id="@+id/loginTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:background="#E8D5B7"
+        android:textColor="#2C3E50"
+        android:textColorHint="#5D4E37"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/loginTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:background="#E8D5B7"
+        android:textColor="#2C3E50"
+        android:textColorHint="#5D4E37"
+        android:layout_marginBottom="16dp" />
+
+    <CheckBox
+        android:id="@+id/loginCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember me"
+        android:textColor="#BDC3C7"
+        android:buttonTint="#FF8C42"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/loginLoginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:backgroundTint="#FF8C42"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>
