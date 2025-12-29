@@ -3,7 +3,10 @@ package com.example.storeapp
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+<<<<<<< HEAD
 import android.widget.Toast
+=======
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -80,6 +83,7 @@ class SearchActivity : AppCompatActivity() {
             return
         }
 
+<<<<<<< HEAD
         try {
             val searchResults = dbHelper.searchProductsByName(query, userId)
             if (searchResults.isEmpty()) {
@@ -110,6 +114,28 @@ class SearchActivity : AppCompatActivity() {
             Toast.makeText(this, "Arama hatası: ${e.message}", Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
             Toast.makeText(this, "Beklenmedik bir hata oluştu", Toast.LENGTH_LONG).show()
+=======
+        val searchResults = dbHelper.searchProductsByName(query, userId)
+        if (searchResults.isEmpty()) {
+            binding.layoutSearch.textViewNoResults.visibility = View.VISIBLE
+            binding.layoutSearch.recyclerViewSearch.visibility = View.GONE
+        } else {
+            binding.layoutSearch.textViewNoResults.visibility = View.GONE
+            binding.layoutSearch.recyclerViewSearch.visibility = View.VISIBLE
+            adapter = ProductAdapter(
+                searchResults.toTypedArray(),
+                dbHelper,
+                userId,
+                onDeleteCallback = { productId ->
+                    if (dbHelper.deleteProduct(productId, userId)) performSearch(query)
+                },
+                onEditCallback = { product ->
+                    EditProductDialog(product, dbHelper) { performSearch(query) }
+                        .show(supportFragmentManager, "EditProductDialog")
+                }
+            )
+            binding.layoutSearch.recyclerViewSearch.adapter = adapter
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
         }
     }
 

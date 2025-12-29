@@ -21,7 +21,10 @@ class ProductAdapter(
     inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productId: TextView = itemView.findViewById(R.id.textViewProductId)
         val productName: TextView = itemView.findViewById(R.id.textViewProductName)
+<<<<<<< HEAD
         val productCategory: TextView = itemView.findViewById(R.id.textViewProductCategory)
+=======
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
         val productCount: TextView = itemView.findViewById(R.id.textViewProductCount)
         val productPrice: TextView = itemView.findViewById(R.id.textViewProductPrice)
         val btnEdit: android.widget.Button = itemView.findViewById(R.id.btnEdit)
@@ -38,7 +41,10 @@ class ProductAdapter(
         // Show Product Name in the green box
         holder.productId.text = currentProduct.name.ifEmpty { "No Name" }
         holder.productName.text = currentProduct.qrCode.ifEmpty { "No QR Code" }
+<<<<<<< HEAD
         holder.productCategory.text = "Category: ${currentProduct.category.displayName}"
+=======
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
         holder.productCount.text = currentProduct.productCount.toString()
         holder.productPrice.text = currentProduct.price.toString()
 
@@ -49,6 +55,7 @@ class ProductAdapter(
 
         // Delete button functionality
         holder.btnDelete.setOnClickListener {
+<<<<<<< HEAD
             try {
                 if (dbHelper.deleteProduct(currentProduct.id, userId)) {
                     Toast.makeText(holder.itemView.context, "Ürün silindi", Toast.LENGTH_SHORT).show()
@@ -60,6 +67,13 @@ class ProductAdapter(
                 Toast.makeText(holder.itemView.context, "Veritabanı hatası: ${e.message}", Toast.LENGTH_LONG).show()
             } catch (e: Exception) {
                 Toast.makeText(holder.itemView.context, "Beklenmedik bir hata oluştu", Toast.LENGTH_LONG).show()
+=======
+            if (dbHelper.deleteProduct(currentProduct.id, userId)) {
+                Toast.makeText(holder.itemView.context, "Ürün silindi", Toast.LENGTH_SHORT).show()
+                onDeleteCallback(currentProduct.id)
+            } else {
+                Toast.makeText(holder.itemView.context, "Silme hatası", Toast.LENGTH_SHORT).show()
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
             }
         }
     }

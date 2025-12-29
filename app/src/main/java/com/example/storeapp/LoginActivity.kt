@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+<<<<<<< HEAD
             try {
                 // Check user in database
                 val user = dbHelper.getUser(email, password)
@@ -65,6 +66,32 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Veritabanı hatası: ${e.message}", Toast.LENGTH_LONG).show()
             } catch (e: Exception) {
                 Toast.makeText(this, "Beklenmedik bir hata oluştu", Toast.LENGTH_LONG).show()
+=======
+            // Check user in database
+            val user = dbHelper.getUser(email, password)
+            if (user != null) {
+                // Save login status and user ID
+                val token = "local_token_${user.id}"
+                
+                if (rememberMeCheckBox.isChecked) {
+                    saveTokenToSharedPreferences(token)
+                } else {
+                    clearTokenFromSharedPreferences()
+                }
+                
+                saveUserIdToSharedPreferences(user.id)
+
+                Toast.makeText(this, "Giriş başarılı!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(
+                    this,
+                    "Parol ya da username sehvdir",
+                    Toast.LENGTH_SHORT
+                ).show()
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
             }
         }
     }

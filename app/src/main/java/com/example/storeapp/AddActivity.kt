@@ -76,6 +76,7 @@ class AddActivity : AppCompatActivity() {
         val userId = sharedPreferences.getInt("userId", -1)
         if (userId == -1) return
 
+<<<<<<< HEAD
         try {
             val dbHelper = DatabaseHelper(this)
             val existingProduct = dbHelper.getProductByQrCode(qrCodeText, userId)
@@ -105,6 +106,30 @@ class AddActivity : AppCompatActivity() {
             Toast.makeText(this, "Veritabanı hatası: ${e.message}", Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
             Toast.makeText(this, "Beklenmedik bir hata oluştu", Toast.LENGTH_LONG).show()
+=======
+        val dbHelper = DatabaseHelper(this)
+        val existingProduct = dbHelper.getProductByQrCode(qrCodeText, userId)
+
+        if (existingProduct != null) {
+            Toast.makeText(this, "Bu QR kod zaten kayıtlı: ${existingProduct.name}", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val newProduct = com.example.storeapp.models.Product(
+            id = 0,
+            name = qrCodeText,
+            productCount = 0,
+            price = 0.0,
+            qrCode = qrCodeText,
+            userId = userId
+        )
+
+        val result = dbHelper.addProduct(newProduct)
+        if (result > 0) {
+            Toast.makeText(this, "Ürün veritabanına eklendi!", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Ürün eklenirken hata oluştu", Toast.LENGTH_SHORT).show()
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
         }
     }
 }

@@ -33,6 +33,7 @@ class SignupActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+<<<<<<< HEAD
             try {
                 // Check if user already exists
                 if (dbHelper.userExists(email)) {
@@ -54,6 +55,23 @@ class SignupActivity : AppCompatActivity() {
                 Toast.makeText(this, "Veritabanı hatası: ${e.message}", Toast.LENGTH_LONG).show()
             } catch (e: Exception) {
                 Toast.makeText(this, "Beklenmedik bir hata oluştu", Toast.LENGTH_LONG).show()
+=======
+            // Check if user already exists
+            if (dbHelper.userExists(email)) {
+                Toast.makeText(this, "Bu email adresi zaten kullanılıyor", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Add user to database
+            val result = dbHelper.addUser(email, password, fullname)
+            if (result > 0) {
+                Toast.makeText(this, "Kayıt başarılı!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(this, "Kayıt başarısız. Lütfen tekrar deneyin.", Toast.LENGTH_SHORT).show()
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
             }
         }
     }

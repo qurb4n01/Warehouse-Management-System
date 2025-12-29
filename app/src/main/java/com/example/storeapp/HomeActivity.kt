@@ -3,7 +3,10 @@ package com.example.storeapp
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+<<<<<<< HEAD
 import android.widget.Toast
+=======
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.storeapp.adapters.ProductAdapter
@@ -35,6 +38,7 @@ class HomeActivity : AppCompatActivity() {
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
+<<<<<<< HEAD
         try {
             val productsList = dbHelper.getAllProducts(userId)
             val productsArray = productsList.toTypedArray()
@@ -61,6 +65,24 @@ class HomeActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Toast.makeText(this, "Beklenmedik bir hata oluştu", Toast.LENGTH_LONG).show()
         }
+=======
+        val productsList = dbHelper.getAllProducts(userId)
+        val productsArray = productsList.toTypedArray()
+        
+        val adapter = ProductAdapter(
+            productsArray,
+            dbHelper,
+            userId,
+            onDeleteCallback = { productId ->
+                if (dbHelper.deleteProduct(productId, userId)) loadProducts()
+            },
+            onEditCallback = { product ->
+                val editDialog = EditProductDialog(product, dbHelper) { loadProducts() }
+                editDialog.show(supportFragmentManager, "EditProductDialog")
+            }
+        )
+        binding.recyclerView.adapter = adapter
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
     }
 
     override fun onResume() {

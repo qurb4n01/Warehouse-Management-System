@@ -23,7 +23,10 @@ class EditProductDialog(
         val editName = view.findViewById<EditText>(R.id.editProductName)
         val editProductCount = view.findViewById<EditText>(R.id.editProductCount)
         val editPrice = view.findViewById<EditText>(R.id.editPrice)
+<<<<<<< HEAD
         val spinnerCategory = view.findViewById<android.widget.Spinner>(R.id.editProductCategory)
+=======
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
         val btnSave = view.findViewById<Button>(R.id.btnSave)
         val btnCancel = view.findViewById<Button>(R.id.btnCancel)
 
@@ -32,6 +35,7 @@ class EditProductDialog(
         editProductCount.setText(product.productCount.toString())
         editPrice.setText(product.price.toString())
 
+<<<<<<< HEAD
         // Setup Spinner
         val categories = com.example.storeapp.models.ProductCategory.values()
         val adapter = android.widget.ArrayAdapter(
@@ -43,6 +47,8 @@ class EditProductDialog(
         spinnerCategory.adapter = adapter
         spinnerCategory.setSelection(categories.indexOf(product.category))
 
+=======
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
         val dialog = AlertDialog.Builder(requireContext())
             .setView(view)
             .create()
@@ -57,14 +63,18 @@ class EditProductDialog(
                 return@setOnClickListener
             }
 
+<<<<<<< HEAD
             val selectedCategory = com.example.storeapp.models.ProductCategory.values()[spinnerCategory.selectedItemPosition]
 
+=======
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
             val updatedProduct = Product(
                 id = product.id,
                 name = name,
                 productCount = productCount,
                 price = price,
                 qrCode = product.qrCode,
+<<<<<<< HEAD
                 userId = product.userId,
                 category = selectedCategory
             )
@@ -81,6 +91,17 @@ class EditProductDialog(
                 Toast.makeText(requireContext(), "Veritabanı hatası: ${e.message}", Toast.LENGTH_LONG).show()
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), "Beklenmedik bir hata oluştu", Toast.LENGTH_LONG).show()
+=======
+                userId = product.userId
+            )
+
+            if (dbHelper.updateProduct(updatedProduct)) {
+                Toast.makeText(requireContext(), "Ürün güncellendi", Toast.LENGTH_SHORT).show()
+                onUpdateCallback()
+                dialog.dismiss()
+            } else {
+                Toast.makeText(requireContext(), "Güncelleme hatası", Toast.LENGTH_SHORT).show()
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
             }
         }
 

@@ -49,6 +49,7 @@
         android:background="#FFFFFF"
         android:textColor="#2C3E50"
         android:textColorHint="#5D4E37"
+<<<<<<< HEAD
         android:layout_marginBottom="12dp" />
 
     <TextView
@@ -65,6 +66,8 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:background="#FDF2E9"
+=======
+>>>>>>> 143d4c0c0b34ade09b11b274824de82891a56248
         android:layout_marginBottom="16dp" />
 
     <LinearLayout
